@@ -3,7 +3,6 @@ package app
 import (
 	"github.com/shirou/gopsutil/cpu"
 	"github.com/shirou/gopsutil/mem"
-	"github.com/shirou/gopsutil/net"
 	"time"
 )
 
@@ -37,10 +36,6 @@ func memory() error {
 	return nil
 }
 
-func network() {
-
-}
-
 func main() {
 	open()
 
@@ -50,7 +45,6 @@ func main() {
 
 			processor()
 			memory()
-			network()
 
 			time.Sleep(10)
 		}()
