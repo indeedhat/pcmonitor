@@ -4,6 +4,8 @@ import (
 	"github.com/shirou/gopsutil/cpu"
 	"github.com/shirou/gopsutil/mem"
 	"time"
+	"./conf"
+	"log"
 )
 
 func processor() {
@@ -37,7 +39,12 @@ func memory() error {
 }
 
 func main() {
-	open()
+	config, err := conf.Load("./conf.yaml")
+	if nil != err {
+		log.Fatal("Failed to load config\nExiting...")
+	}
+
+	open(config)
 
 	for {
 		func() {
